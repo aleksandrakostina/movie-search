@@ -1,6 +1,12 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 .wrapper {
   width: 100%;
-  max-width: 940px;
+  max-width: 1060px;
   margin: 0 auto;
   padding: 0 40px;
 }
