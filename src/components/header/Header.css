@@ -1,0 +1,21 @@
+.header {
+  padding: 40px 0 20px;
+}
+
+.header__wrapper {
+  display: flex;
+}
+
+.header__title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+  margin-left: 20px;  
+  color: #000000; 
+}
+
+.logo {
+  display: block;
+  width: 200px;
+  height: auto;
+}
