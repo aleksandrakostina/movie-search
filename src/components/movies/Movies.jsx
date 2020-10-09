@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Movie from './Movie';
 import './Movies.css';
 
-const Movies = () => {
+const Movies = (props) => {
 
   const movies = [
     {
@@ -19,7 +20,7 @@ const Movies = () => {
     }
   ];
 
-  const moviesList = movies.map((item, index) => <Movie key={index} item={item} />);
+  const moviesList = props.movies.map((item, index) => <Movie key={index} item={item} />);
 
   return (
     <section className="movies">
@@ -32,4 +33,10 @@ const Movies = () => {
   )
 }
 
-export default Movies;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies.movies
+  }
+}
+
+export default connect(mapStateToProps)(Movies);

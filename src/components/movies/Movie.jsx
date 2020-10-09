@@ -7,22 +7,21 @@ const Movie = (props) => {
   const movie = props.item;
 
   return (
-    <div class="movie__item">
-      <div class="movie__poster">
-        <img class="movie__poster-image" src={movie.image} />
-        <h4 class="movie__rating">{movie.rating}</h4>
-        <div class="overlay"> 
-          <div class="overlay__content">
+    <div className="movie__item">
+      <div className="movie__poster">
+        <img className="movie__poster-image" src={movie.Poster} />
+        <div className="overlay"> 
+          <div className="overlay__content">
             <Play className="play" />           
             <h4>Play</h4>
           </div>
         </div>
       </div>
-      <div class="movie__info">
-        <h4 class="movie__title">{movie.title}</h4>             
-        <h5 class="movie__year">{movie.year}</h5>
+      <div className="movie__info">
+        <h4 className="movie__title">{movie.Title}</h4>             
+        <h5 className="movie__year">{movie.Year}</h5>
       </div>
-      <div class="movie__mark">
+      <div className="movie__mark">
         <Bookmark className="bookmark" />
       </div>
     </div>

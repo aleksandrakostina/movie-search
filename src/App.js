@@ -4,14 +4,17 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Movies from './components/movies/Movies';
 import SearchForm from './components/searchForm/SearchForm';
+import MovieProvider from './redux/MovieProvider';
 
 const App = () => {
 
   return (
     <>
       <Header />
-      <SearchForm />
-      <Movies />
+      <MovieProvider>
+        <SearchForm />
+        <Movies />
+      </MovieProvider>
       <Footer />
     </>
   );
