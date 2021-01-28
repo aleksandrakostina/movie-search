@@ -67,8 +67,6 @@
 }
 
 .button {
-  padding: 9px 25px;
-
   font-family: "Roboto", "Verdana", "Geneva", sans-serif;
   font-style: normal;
   font-size: 13px;
@@ -78,7 +76,9 @@
   border: none;  
   border-radius: 10px; 
   box-shadow: 0 1px 6px 0 rgba(93, 115, 180, 0.3);
-  background: rgba(255, 240, 0, 0.6);
+  background: #21a4f7;
+  color: white;
+  font-weight: 600;
   
   transition: 1s;
   cursor: pointer;
@@ -91,4 +91,27 @@
 
 .button:hover {
   box-shadow: 0 1px 6px 0 rgba(93, 115, 180, 0.6);
+}
+
+.search__text {
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.button_search {
+  padding: 9px 25px;
+}
+
+@media screen and (max-width: 480px) {
+  .button_search {
+    padding: 6px 17px;
+  }
+  .search-form {
+    margin-bottom: 15px;
+  }
+  .search__text {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
 }

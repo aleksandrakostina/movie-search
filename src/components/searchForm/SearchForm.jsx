@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
-import { ReactComponent as Loader } from './../../assets/images/loader.svg';
 import { getMovies } from '../../redux/actionCreators';
 import { connect } from 'react-redux';
 
 const SearchForm = (props) => {
 
-  const [value, setValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
+  //const [fireRedirect, setFireRedirect] = useState(false);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
+  /*if(fireRedirect && searchValue) {
+    return <Redirect to={`/search/${searchValue}`} push />
+  };*/
+
+  const handleInputChanges = (e) => {
+    setSearchValue(e.target.value);
+  }
+
+  const handleResetInput = () => {
+    setSearchValue("");
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.getMovies(value);
-  }
-
-  const handleClearInput = () => {
-    setValue('');
+    //setFireRedirect(true);
+    if(searchValue.trim().length > 3) {
+      props.getMovies(searchValue.trim(), 1);
+    }
   }
 
   return (
@@ -26,17 +33,20 @@ const SearchForm = (props) => {
       <div className="wrapper search__wrapper">
         <form className="search-form" onSubmit={handleSubmit}>
           <div className="search__container">
-            <input className="search__input" 
-                    placeholder="Search movie" 
-                    autoFocus 
-                    type="text" 
-                    value={value} 
-                    onChange={handleChange} />
-            <Loader className="loader" />   
-            <span className="clear-button" onClick={handleClearInput}></span>
+            <input value={searchValue}
+                  onChange={handleInputChanges}
+                  className="search__input"
+                  placeholder="Search movie" 
+                  autoFocus 
+                  type="text" />
+            <span className="clear-button" onClick={handleResetInput}></span>
           </div>
-          <button className="button button_search">Search</button>
-        </form> 
+          <button className="button button_search" type="submit">Search</button>
+        </form>
+        <div className="search__text">
+          {!props.error && props.totalResults && <p>Showing {props.totalResults} results</p>}
+          {props.error && <p>{props.errorMessage}</p>}
+        </div>
       </div>
     </section>
   )
@@ -44,16 +54,21 @@ const SearchForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.movies.isLoading
+    isLoading: state.movies.movies.isLoading,
+    totalResults: state.movies.movies.data.totalResults,
+    errorMessage: state.movies.movies.errorMessage,
+    error: state.movies.movies.error
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMovies: (search) => {
-      dispatch(getMovies(search));
+    getMovies: (search, page) => {
+      dispatch(getMovies(search, page));
     }
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+
+//<Loader className={classnames("loader", {"loader_active": props.isLoading})}/> 

@@ -1,19 +1,28 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
-import logo from './../../assets/images/movie_logo.png';
+import { ReactComponent as WatchlistIcon } from './../../assets/images/watchlist.svg'
 
 const Header = () => {
+
   return (
-    <header className="header">
+    <div className="header">
       <div className="wrapper header__wrapper">
         <div className="header__logo">
-          <img className="logo" src={logo} alt='logo' />
+          <NavLink to="/">
+            <h1 className="logo__text">Movie.tv</h1>
+          </NavLink>
         </div>
-        <div className="header__title">
-          <h1>Search Movie</h1>
+        <div className="header__navbar">
+          <div className="header__watchlist-button">
+          <NavLink to="/watchlist">
+            <WatchlistIcon className="watchlist-icon" />
+            <span>Watchlist</span>
+          </NavLink>
+          </div>
         </div>
       </div>   
-    </header>
+    </div>
   )
 }
 

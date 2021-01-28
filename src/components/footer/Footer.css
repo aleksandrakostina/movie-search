@@ -12,6 +12,7 @@
 
 .footer__copyright {
   font-size: 14px;
+  user-select: none;
   color: rgba(255,255,255,.5);
 }
 
@@ -27,4 +28,17 @@
 
 .github:hover {
   fill: #ffffff;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 15px 0 15px;
+  }
+  .footer__copyright {
+    font-size: 12px;
+  }
+  .github {
+    width: 25px;
+    height: 25px;
+  }
 }
